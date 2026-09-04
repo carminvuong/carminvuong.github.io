@@ -1,6 +1,6 @@
-# Portfolio — Minh (Carmin) Vuong
+# Portfolio
 
-Personal site. Astro, no client-side JavaScript, deployed to GitHub Pages.
+Personal site made using Astro, deployed to GitHub Pages.
 
 
 ## Routes
