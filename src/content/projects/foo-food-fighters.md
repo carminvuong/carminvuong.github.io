@@ -8,7 +8,7 @@ summary: >
   photograph and estimates its nutritional values. The vision path runs fast enough for
   live recognition, so the camera feed itself becomes the input — point it at a plate and
   get an answer back.
-repo: https://github.com/YOUR-GITHUB-USERNAME/foo-food-fighters
+repo: https://github.com/Keobkeig/Foo-Food-Fighters
 ---
 
 ## The idea

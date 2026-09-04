@@ -1,16 +1,15 @@
 ---
-title: Wimbledon Match Prediction Model
+title: Tennis Versus
 stack: [Python, XGBoost, pandas, scikit-learn]
 order: 1
 year: "2026"
 featured: true
 summary: >
-  An end-to-end pipeline that predicts ATP match outcomes. I collected and cleaned the
-  TennisMyLife archive — forty years of results, north of fifty thousand matches — then
-  engineered surface-specific win rates, recent form and head-to-head history into an
-  XGBoost classifier, validated with time-series cross-validation so no future
-  information leaks backward into the training folds.
-repo: https://github.com/YOUR-GITHUB-USERNAME/wimbledon-prediction
+  An end-to-end pipeline that predicts cross-era ATP match outcomes. I collected and cleaned the
+  TennisMyLife archive (~40 years of matches, more than 50k entries) then
+  engineered surface-specific win rates, recent form and ELO into an
+  XGBoost classifier.
+repo: https://github.com/carminvuong/tennis_versus
 metrics:
   - value: "63"
     unit: "%"
@@ -27,7 +26,7 @@ metrics:
   - value: "10"
     unit: "+"
     label: Features engineered
-    note: Surface, form, head-to-head
+    note: Surface, form, Elo
 ---
 
 ## The problem

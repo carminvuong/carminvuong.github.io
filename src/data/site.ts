@@ -4,6 +4,9 @@
 export const profile = {
   name: 'Minh Vuong',
   alias: '(Carmin)',
+
+  // The browser tab title. Every page uses this verbatim.
+  siteTitle: 'Carmin Vuong',
   location: 'Brooklyn, NY',
   email: 'mgvuong@gmail.com',
 
