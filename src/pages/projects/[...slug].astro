@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Metrics from '../../components/Metrics.astro';
+import { profile } from '../../data/site';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, stack, summary, repo, demo, metrics } = project.data;
+---
+
+<Base title={`${title} — ${profile.name}`} description={summary}>
+  <article class="detail frame">
+    <a class="back" href="/projects/">← All projects</a>
+
+    <header>
+      <h1 class="project__title">{title}</h1>
+      <p class="project__stack">{stack.join(' · ')}</p>
+    </header>
+
+    {metrics && metrics.length > 0 && <Metrics metrics={metrics} />}
+
+    <div class="detail__body">
+      <Content />
+    </div>
+
+    {
+      (repo || demo) && (
+        <p class="project__more">
+          {repo && <a href={repo}>Repository</a>}
+          {demo && <a href={demo}>Live demo</a>}
+        </p>
+      )
+    }
+  </article>
+</Base>

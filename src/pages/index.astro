@@ -1,0 +1,106 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import RoleEntry from '../components/RoleEntry.astro';
+import { profile, experience, education, skills } from '../data/site';
+
+const all = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+// The home page shows only what's flagged featured. The full index lives at
+// /projects/ — set `featured: true` in a project's frontmatter to surface it here.
+const featured = all.filter((project) => project.data.featured);
+const others = all.length - featured.length;
+---
+
+<Base title={`${profile.name} — Software Engineer`}>
+  <!-- ── Hero ──────────────────────────────────────────────── -->
+  <div class="hero frame">
+    <p class="hero__status">
+      <span class="hero__dot" aria-hidden="true"></span>{profile.status}
+    </p>
+
+    <h1 class="hero__name">
+      {profile.name}<span class="hero__alias">{profile.alias}</span>
+    </h1>
+
+    <p class="hero__lede">{profile.lede}</p>
+
+    <ul class="hero__links">
+      <li><a href={`mailto:${profile.email}`}>Email</a></li>
+      <li><a href={profile.github}>GitHub</a></li>
+      <li><a href={profile.linkedin}>LinkedIn</a></li>
+      {profile.resume && <li><a href={profile.resume}>Résumé (PDF)</a></li>}
+    </ul>
+  </div>
+
+  <div class="band" role="presentation"></div>
+
+  <!-- ── Work ──────────────────────────────────────────────── -->
+  <Section label="Projects" id="work">
+    <div class="stack-lg">
+      {featured.map((project) => <ProjectCard project={project} />)}
+    </div>
+
+    <p class="more-link">
+      <a href="/projects/">
+        All projects
+        {others > 0 && <span class="more-link__count"> ({others} more)</span>}
+        <span aria-hidden="true"> →</span>
+      </a>
+    </p>
+  </Section>
+
+  <!-- ── Experience ────────────────────────────────────────── -->
+  <Section label="Experience" id="experience">
+    <div class="roles-list">
+      {
+        experience.map((role) => (
+          <RoleEntry
+            title={role.title}
+            org={role.org}
+            dates={role.dates}
+            detail={role.detail}
+          />
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- ── Skills ────────────────────────────────────────────── -->
+  <Section label="Toolkit" id="skills">
+    <dl class="skills">
+      {
+        skills.map((group) => (
+          <div class="skills__row">
+            <dt class="skills__label">{group.label}</dt>
+            <dd class="skills__items">
+              {group.items.map((item) => (
+                <span>{item}</span>
+              ))}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </Section>
+
+  <!-- ── Education ─────────────────────────────────────────── -->
+  <Section label="Education" id="education">
+    <div class="stack-md">
+      {
+        education.map((school) => (
+          <RoleEntry
+            title={school.school}
+            dates={school.dates}
+            detail={school.detail}
+            coursework={school.coursework}
+          />
+        ))
+      }
+    </div>
+  </Section>
+</Base>

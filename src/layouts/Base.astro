@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+import { profile } from '../data/site';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = profile.metaDescription } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+// Served from public/ — see `favicon` in src/data/site.ts.
+const { favicon } = profile;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {favicon && <link rel="icon" href={favicon} sizes="any" />}
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#FF5A00" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300..600&display=swap"
+    />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="topbar">
+      <div class="topbar__inner">
+        <a class="topbar__mark" href="/" aria-label={`${profile.name} — home`}>
+          <img src="/android-chrome-192x192.png" alt="" width="192" height="192" />
+        </a>
+        <nav class="topbar__nav" aria-label="Sections">
+          <a href="/projects/">Projects</a>
+          <a href="/#experience">Experience</a>
+          <a href="/#skills">Skills</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="frame">
+        {profile.closing && <p class="footer__lede">{profile.closing}</p>}
+        <ul class="footer__links">
+          <li><a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+          <li><a href={profile.github}>GitHub</a></li>
+          <li><a href={profile.linkedin}>LinkedIn</a></li>
+        </ul>
+        <p class="footer__colophon">
+          built with Astro.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

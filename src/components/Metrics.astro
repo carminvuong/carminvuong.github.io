@@ -1,0 +1,29 @@
+---
+interface Metric {
+  value: string;
+  unit?: string;
+  label: string;
+  note?: string;
+}
+
+interface Props {
+  metrics: Metric[];
+}
+
+const { metrics } = Astro.props;
+---
+
+<dl class="metrics">
+  {
+    metrics.map((m) => (
+      <div>
+        <dd class="metrics__value">
+          {m.value}
+          {m.unit && <span class="metrics__unit">{m.unit}</span>}
+        </dd>
+        <dt class="metrics__label">{m.label}</dt>
+        {m.note && <p class="metrics__note">{m.note}</p>}
+      </div>
+    ))
+  }
+</dl>

@@ -1,0 +1,32 @@
+---
+import Metrics from './Metrics.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  /** The index page shows the year; the home page doesn't need it. */
+  showYear?: boolean;
+}
+
+const { project, showYear = false } = Astro.props;
+const { title, stack, summary, repo, demo, metrics, year } = project.data;
+const href = `/projects/${project.id}/`;
+---
+
+<article class="project">
+  <header class="project__head">
+    {showYear && year && <p class="project__year">{year}</p>}
+    <h3 class="project__title"><a href={href}>{title}</a></h3>
+    <p class="project__stack">{stack.join(' · ')}</p>
+  </header>
+
+  <p class="prose">{summary}</p>
+
+  {metrics && metrics.length > 0 && <Metrics metrics={metrics} />}
+
+  <p class="project__more">
+    <a href={href}>Read the writeup</a>
+    {repo && <a href={repo}>Repository</a>}
+    {demo && <a href={demo}>Live demo</a>}
+  </p>
+</article>

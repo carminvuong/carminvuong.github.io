@@ -1,0 +1,53 @@
+---
+interface Props {
+  title: string;
+  /** The prominent second line — the company. Omitted where the title already
+   *  names the institution, as on education entries. */
+  org?: string;
+  dates: string;
+  /** One compact line of substance — stack and numbers. */
+  detail?: string;
+  /** Long-form bullets. Used only if `detail` isn't enough. */
+  points?: string[];
+  coursework?: string;
+}
+
+const { title, org, dates, detail, points = [], coursework } = Astro.props;
+---
+
+<article>
+  <header class="role__head">
+    <h3 class="role__title">{title}</h3>
+    <p class="role__dates">{dates}</p>
+    {org && <p class="role__org">{org}</p>}
+  </header>
+
+  {
+    detail && (
+      <p class="role__detail">
+        {detail.split(' · ').map((part, i) => (
+          <>
+            {i > 0 && (
+              <span class="role__sep" aria-hidden="true">
+                ·
+              </span>
+            )}
+            {part}
+          </>
+        ))}
+      </p>
+    )
+  }
+
+  {
+    points.length > 0 && (
+      <ul class="role__points">
+        {points.map((point) => (
+          <li>{point}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  {coursework && <p class="role__coursework">{coursework}</p>}
+</article>
