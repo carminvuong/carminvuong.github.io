@@ -27,9 +27,9 @@ export const profile = {
 
   status: 'Probably doing LeetCode...',
   lede:
-    "Computer Science & Mathematics @ NYU. I build full-stack systems that hold " +
-    "up in front of real users, and models that have to be right about matches " +
-    "that haven't been played yet.",
+    "Computer Science & Mathematics @ NYU. Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
+    'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' +
+    'exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   metaDescription:
     'Minh (Carmin) Vuong — Computer Science & Mathematics at NYU. Full-stack ' +
     'engineering and predictive modeling. Seeking Summer 2027 software engineering internships.',
@@ -55,7 +55,7 @@ export const experience: Role[] = [
     title: 'Software Development Intern',
     org: 'NYU CREATE Lab',
     dates: 'Jan 2026 — Present',
-    detail: 'React, AdonisJS, TypeScript · 5 classrooms · 150+ students',
+    detail: 'Next.js · React · TypeScript · MongoDB',
     points: [
       'Engineered a full-stack learning platform in React, AdonisJS and TypeScript, deployed to five low-resource classrooms and serving personalized AI-assisted instruction to over 150 students.',
       'Built a real-time interaction telemetry pipeline with secure authentication, processing behavioral events into MongoDB to drive engagement analytics.',
@@ -65,7 +65,7 @@ export const experience: Role[] = [
     title: 'Software Engineering Mentee',
     org: 'Google',
     dates: 'Feb 2023 — Jun 2024',
-    detail: 'Django · external API integration · 500+ daily listings aggregated',
+    detail: 'Django · Flask · REST APIs · TensorFlow · CNNs',
     points: [
       'Built a Django job-search platform with secure authentication, integrating external APIs to aggregate 500+ daily listings and cut manual search time.',
       'Received weekly technical mentorship from a Google software engineer on system design, code review practice, and API integration.',
@@ -75,38 +75,22 @@ export const experience: Role[] = [
     title: 'Software Engineering Lead',
     org: 'FIRST Robotics Team 694 · StuyPulse',
     dates: 'Sep 2021 — Jun 2024',
-    detail: 'Java, WPILib, PID control · 95% autonomous success rate · 30+ members trained',
+    detail: 'Java · WPILib · PID Control',
     points: [
       'Implemented Java PID control for drivetrain and intake subsystems, reaching a 95% autonomous task success rate across competition matches.',
       'Trained 30+ team members on Java, WPILib and control theory for FRC robot development.',
     ],
   },
-  {
-    title: 'Co-Founder',
-    org: 'Py4All',
-    dates: 'Jun 2022 — Aug 2022',
-    detail: 'Custom Python curriculum · 200+ students enrolled · taught a class of 40',
-    points: [
-      'Co-founded a youth coding camp and scaled enrollment past 200 students on a custom Python curriculum.',
-      'Wrote the curriculum and taught programming fundamentals to a class of 40.',
-    ],
-  },
-];
-
-export const education = [
-  {
-    school: 'New York University',
-    detail: 'B.A. Computer Science & Mathematics · GPA 3.86',
-    dates: 'Sep 2024 — May 2028',
-    coursework:
-      'Data Structures · Algorithms · Operating Systems · Computer Systems Organization · Linear Algebra · Real Analysis',
-  },
-  {
-    school: 'Stuyvesant High School',
-    detail: 'New York, NY · GPA 4.0',
-    dates: 'Sep 2020 — Jun 2024',
-    coursework: '',
-  },
+  // {
+  //   title: 'Co-Founder',
+  //   org: 'Py4All',
+  //   dates: 'Jun 2022 — Aug 2022',
+  //   detail: 'Python · Teaching',
+  //   points: [
+  //     'Co-founded a youth coding camp and scaled enrollment past 200 students on a custom Python curriculum.',
+  //     'Wrote the curriculum and taught programming fundamentals to a class of 40.',
+  //   ],
+  // },
 ];
 
 export const skills = [

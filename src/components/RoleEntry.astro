@@ -1,18 +1,16 @@
 ---
 interface Props {
   title: string;
-  /** The prominent second line — the company. Omitted where the title already
-   *  names the institution, as on education entries. */
+  /** The prominent second line — the company. */
   org?: string;
   dates: string;
   /** One compact line of substance — stack and numbers. */
   detail?: string;
   /** Long-form bullets. Used only if `detail` isn't enough. */
   points?: string[];
-  coursework?: string;
 }
 
-const { title, org, dates, detail, points = [], coursework } = Astro.props;
+const { title, org, dates, detail, points = [] } = Astro.props;
 ---
 
 <article>
@@ -48,6 +46,4 @@ const { title, org, dates, detail, points = [], coursework } = Astro.props;
       </ul>
     )
   }
-
-  {coursework && <p class="role__coursework">{coursework}</p>}
 </article>
