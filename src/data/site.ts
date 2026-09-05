@@ -25,7 +25,7 @@ export const profile = {
   resume: '',
   // ───────────────────────────────────────────────────────────────
 
-  status: 'Probably doing LeetCode...',
+  status: 'probably doing LeetCode...',
 
   // The small line under the name in the hero. `subheadAccent` is the slice of
   // that string picked out in violet — leave it '' for no highlight.
@@ -80,7 +80,7 @@ export const experience: Role[] = [
   },
   {
     title: 'Software Engineering Lead',
-    org: 'FIRST Robotics Team 694 · StuyPulse',
+    org: 'FIRST Robotics Team 694 StuyPulse',
     dates: 'Sep 2021 — Jun 2024',
     detail: 'Java · WPILib · PID Control',
     points: [

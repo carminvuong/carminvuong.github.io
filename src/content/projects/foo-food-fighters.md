@@ -1,7 +1,7 @@
 ---
 title: Foo Food Fighters
 stack: [TypeScript, Flask, TensorFlow]
-order: 2
+order: 3
 year: "2025"
 summary: >
   A TensorFlow MobileNet model served behind a Flask API that classifies food from a

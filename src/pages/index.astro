@@ -52,7 +52,7 @@ const others = all.length - featured.length;
         <li><a href={`mailto:${profile.email}`}>Email</a></li>
         <li><a href={profile.github}>GitHub</a></li>
         <li><a href={profile.linkedin}>LinkedIn</a></li>
-        {profile.resume && <li><a href={profile.resume}>Résumé (PDF)</a></li>}
+        {profile.resume && <li><a href={profile.resume}>Resume (PDF)</a></li>}
       </ul>
     </div>
 
@@ -60,8 +60,7 @@ const others = all.length - featured.length;
       class="hero__portrait"
       src={portrait}
       alt={`${profile.name}, ${profile.location}`}
-      width={320}
-      densities={[1, 2]}
+      width={900}
       loading="eager"
     />
   </div>
