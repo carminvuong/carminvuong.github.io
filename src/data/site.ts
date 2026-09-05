@@ -40,7 +40,7 @@ export const profile = {
   metaDescription:
     'Minh (Carmin) Vuong — Computer Science & Mathematics at NYU. Full-stack ' +
     'engineering and predictive modeling. Seeking Summer 2027 software engineering internships.',
-  closing: '',
+  closing: 'email me anytime!',
 };
 
 export type Role = {

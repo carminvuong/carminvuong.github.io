@@ -24,6 +24,15 @@ const { title, stack, summary, repo, demo, metrics } = project.data;
     <header>
       <h1 class="project__title">{title}</h1>
       <p class="project__stack">{stack.join(' · ')}</p>
+
+      {
+        (repo || demo) && (
+          <p class="project__more">
+            {repo && <a href={repo}>Repository</a>}
+            {demo && <a href={demo}>Live demo</a>}
+          </p>
+        )
+      }
     </header>
 
     {metrics && metrics.length > 0 && <Metrics metrics={metrics} />}
@@ -32,13 +41,5 @@ const { title, stack, summary, repo, demo, metrics } = project.data;
       <Content />
     </div>
 
-    {
-      (repo || demo) && (
-        <p class="project__more">
-          {repo && <a href={repo}>Repository</a>}
-          {demo && <a href={demo}>Live demo</a>}
-        </p>
-      )
-    }
   </article>
 </Base>

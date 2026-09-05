@@ -362,7 +362,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 
 .project__more {
-  margin-top: 1.5rem;
+  margin-top: 0.9rem;
   font-family: var(--font-mono);
   font-size: var(--step--1);
   display: flex;
@@ -596,6 +596,28 @@ a:hover { text-decoration-thickness: 2px; }
 .detail { padding-block: clamp(2.5rem, 6vw, 4rem) clamp(3rem, 7vw, 5rem); }
 
 .detail__body { max-width: 66ch; }
+
+/* Margin notes. Inline by default; from 1120px there is room to float them into
+   the space to the right of the 66ch prose column, so they sit beside the text.
+   Write one in a .md file as: <aside class="sidenote">...</aside> */
+.sidenote {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  line-height: 1.65;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--orange);
+  padding-left: 0.85rem;
+}
+@media (min-width: 1120px) {
+  .sidenote {
+    float: right;
+    clear: right;
+    width: 14rem;
+    /* Own width plus the gutter, so it clears the prose column entirely. */
+    margin-right: -15.75rem;
+    margin-bottom: 1.25rem;
+  }
+}
 .detail__body > * + * { margin-top: 1.25rem; }
 .detail__body h2 {
   font-size: var(--step-2);
