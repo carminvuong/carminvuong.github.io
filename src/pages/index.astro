@@ -1,10 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Section from '../components/Section.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import RoleEntry from '../components/RoleEntry.astro';
 import { profile, experience, skills } from '../data/site';
+import portrait from '../assets/portrait.jpg';
 
 const all = (await getCollection('projects')).sort(
   (a, b) => a.data.order - b.data.order
@@ -12,6 +14,18 @@ const all = (await getCollection('projects')).sort(
 
 // The home page shows only what's flagged featured. The full index lives at
 // /projects/ — set `featured: true` in a project's frontmatter to surface it here.
+// Split the subhead so the accent term can carry its own colour. Falls back to
+// the plain string if the term isn't in there.
+const accentAt = profile.subheadAccent ? profile.subhead.indexOf(profile.subheadAccent) : -1;
+const subhead =
+  accentAt === -1
+    ? { before: profile.subhead, accent: '', after: '' }
+    : {
+        before: profile.subhead.slice(0, accentAt),
+        accent: profile.subheadAccent,
+        after: profile.subhead.slice(accentAt + profile.subheadAccent.length),
+      };
+
 const featured = all.filter((project) => project.data.featured);
 const others = all.length - featured.length;
 ---
@@ -19,22 +33,37 @@ const others = all.length - featured.length;
 <Base title={`${profile.name} — Software Engineer`}>
   <!-- ── Hero ──────────────────────────────────────────────── -->
   <div class="hero frame">
-    <p class="hero__status">
-      <span class="hero__dot" aria-hidden="true"></span>{profile.status}
-    </p>
+    <div class="hero__text">
+      <p class="hero__status">
+        <span class="hero__dot" aria-hidden="true"></span>{profile.status}
+      </p>
 
-    <h1 class="hero__name">
-      {profile.name}<span class="hero__alias">{profile.alias}</span>
-    </h1>
+      <h1 class="hero__name">
+        {profile.name}<span class="hero__alias">{profile.alias}</span>
+      </h1>
 
-    <p class="hero__lede">{profile.lede}</p>
+      <p class="hero__subhead">
+        {subhead.before}<span class="hero__subhead-accent">{subhead.accent}</span>{subhead.after}
+      </p>
 
-    <ul class="hero__links">
-      <li><a href={`mailto:${profile.email}`}>Email</a></li>
-      <li><a href={profile.github}>GitHub</a></li>
-      <li><a href={profile.linkedin}>LinkedIn</a></li>
-      {profile.resume && <li><a href={profile.resume}>Résumé (PDF)</a></li>}
-    </ul>
+      <p class="hero__lede">{profile.lede}</p>
+
+      <ul class="hero__links">
+        <li><a href={`mailto:${profile.email}`}>Email</a></li>
+        <li><a href={profile.github}>GitHub</a></li>
+        <li><a href={profile.linkedin}>LinkedIn</a></li>
+        {profile.resume && <li><a href={profile.resume}>Résumé (PDF)</a></li>}
+      </ul>
+    </div>
+
+    <Image
+      class="hero__portrait"
+      src={portrait}
+      alt={`${profile.name}, ${profile.location}`}
+      width={320}
+      densities={[1, 2]}
+      loading="eager"
+    />
   </div>
 
   <div class="band" role="presentation"></div>
@@ -71,7 +100,7 @@ const others = all.length - featured.length;
   </Section>
 
   <!-- ── Skills ────────────────────────────────────────────── -->
-  <Section label="Toolkit" id="skills">
+  <Section label="Skills" id="skills">
     <dl class="skills">
       {
         skills.map((group) => (

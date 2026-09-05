@@ -26,10 +26,17 @@ export const profile = {
   // ───────────────────────────────────────────────────────────────
 
   status: 'Probably doing LeetCode...',
+
+  // The small line under the name in the hero. `subheadAccent` is the slice of
+  // that string picked out in violet — leave it '' for no highlight.
+  subhead: 'Computer Science & Mathematics @ NYU',
+  subheadAccent: 'NYU',
+
   lede:
-    "Computer Science & Mathematics @ NYU. Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
-    'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud' +
-    'exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    'It still fascinates me how we turned small rocks into computers, ' +
+    'the internet, and AI - and much much more. ' +
+    'There\'s  still a lifetime of learning packed into each of those leaps, and it\'ll be impossible to know it all. ' +
+    "But that's okay. I don't need to know everything, I just need to keep finding out.",
   metaDescription:
     'Minh (Carmin) Vuong — Computer Science & Mathematics at NYU. Full-stack ' +
     'engineering and predictive modeling. Seeking Summer 2027 software engineering internships.',
