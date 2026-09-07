@@ -12,20 +12,20 @@ summary: >
 repo: https://github.com/carminvuong/tennis_versus
 demo: https://tennis-versus.vercel.app/
 metrics:
-  - value: "63"
-    unit: "%"
+  - value: "63%"
+    unit: ""
     label: Wimbledon 2026 accuracy
     # note: Level with IBM SlamTracker
-  - value: "71"
-    unit: "%"
+  - value: "71%"
+    unit: ""
     label: General ATP matches
     # note: Across held-out seasons
   - value: "50k"
-    unit: "+"
+    unit: ""
     label: Matches in training set
     # note: Three and a half decades
-  - value: "10"
-    unit: "+"
+  - value: "10+"
+    unit: ""
     label: Features engineered
     # note: Surface, form, Elo
 ---
